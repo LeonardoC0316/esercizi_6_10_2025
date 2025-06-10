@@ -1,30 +1,12 @@
-def cifrario_cesare(testo: str, chiave: int) -> str:
-    risultato = ""
-    chiave = chiave % 26
-    for carattere in testo:
-        if 'a' <= carattere <= 'z':
-            spostato = (ord(carattere) - ord('a') + chiave) % 26 + ord('a')
-            risultato += chr(spostato)
-        elif 'A' <= carattere <= 'Z':
-            spostato = (ord(carattere) - ord('A') + chiave) % 26 + ord('A')
-            risultato += chr(spostato)
-        else:
-            risultato += carattere
-    return risultato
+from string import ascii_lowercase
+def cifrario(s:str, k:int) -> str:
+    l:str = ""
 
-def decifra(testo: str, chiave: int) -> str:
-    risultato = ""
-    chiave = chiave % 26
-    for carattere in testo:
-        if 'a' <= carattere <= 'z':
-            spostato = (ord(carattere) - ord('a') - chiave) % 26 + ord('a')
-            risultato += chr(spostato)
-        elif 'A' <= carattere <= 'Z':
-            spostato = (ord(carattere) - ord('A') - chiave) % 26 + ord('A')
-            risultato += chr(spostato)
-        else:
-            risultato += carattere
-    return risultato
+    for carattere in s:
+        index: int = ascii_lowercase.index(carattere)
+        index = (index + k) % len(ascii_lowercase)
+        l += ascii_lowercase[index]
+    return l
 
 
 print(cifrario_cesare("ciao", 28))
