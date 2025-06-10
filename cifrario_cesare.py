@@ -8,6 +8,3 @@ def cifrario(s:str, k:int) -> str:
         l += ascii_lowercase[index]
     return l
 
-
-print(cifrario_cesare("ciao", 28))
-print(decifra("ekcq", 28))
