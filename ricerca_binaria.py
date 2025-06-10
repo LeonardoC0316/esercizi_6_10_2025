@@ -1,19 +1,15 @@
-def ricerca_binaria(lista: list[int], numero: int) -> bool:
-    sinistra = 0
-    destra = len(lista) - 1
+def bin_search(list:list[int], number: int) -> None:
+    half: int = len(list) // 2
 
-    while sinistra <= destra:
-        centro = (sinistra + destra) // 2
-        if lista[centro] == numero:
-            return True
-        elif lista[centro] < numero:
-            sinistra = centro + 1
-        else:
-            destra = centro - 1
-
-    return False
+    if list[half] == number:
+        print("Number found!")
+    elif len(list) == 1:
+        print("Number not found!")
+    elif list[half] < number:
+        bin_search(list[half + 1:], number)
+    elif list[half] > number:
+        bin_search(list[:half], number)
 
 
-numeri = [2, 4, 5, 7, 10, 22, 45]
-print(ricerca_binaria(numeri, 10)) 
-print(ricerca_binaria(numeri, 23))  
+bin_search([1,2,3,4,5,6,7,8], 9)
+bin_search([1,2,3,4,5,6,7,8], 2)
